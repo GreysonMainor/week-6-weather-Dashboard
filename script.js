@@ -64,11 +64,17 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response)
+            $("#futureImg").html("https://openweathermap.org/img/wn/" + (response.list[1].weather[0].icon) + ".png")
             $("#futureTemp1").html(response.list[1].main.temp)
             $("#futureTemp2").html(response.list[8].main.temp)
             $("#futureTemp3").html(response.list[16].main.temp)
             $("#futureTemp4").html(response.list[24].main.temp)
             $("#futureTemp5").html(response.list[32].main.temp)
+            $("#futureHumidity1").html((response.list[1].main.humidity) + "%");
+            $("#futureHumidity2").html((response.list[8].main.humidity) + "%");
+            $("#futureHumidity3").html((response.list[16].main.humidity) + "%");
+            $("#futureHumidity4").html((response.list[24].main.humidity) + "%");
+            $("#futureHumidity5").html((response.list[32].main.humidity) + "%");
             
         })
     }
