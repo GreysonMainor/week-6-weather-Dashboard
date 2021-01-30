@@ -64,21 +64,26 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response)
-            $("#futureDate1").html(new Date(response.list[1].dt * 1000).toLocaleDateString());
-            $("#futureDate2").html(new Date(response.list[8].dt * 1000).toLocaleDateString());
-            $("#futureDate3").html(new Date(response.list[16].dt * 1000).toLocaleDateString());
-            $("#futureDate4").html(new Date(response.list[24].dt * 1000).toLocaleDateString());
-            $("#futureDate5").html(new Date(response.list[32].dt * 1000).toLocaleDateString());
-            $("#futureTemp1").html(response.list[1].main.temp);
-            $("#futureTemp2").html(response.list[8].main.temp);
-            $("#futureTemp3").html(response.list[16].main.temp);
-            $("#futureTemp4").html(response.list[24].main.temp);
-            $("#futureTemp5").html(response.list[32].main.temp);
-            $("#futureHumidity1").html((response.list[1].main.humidity) + "%");
-            $("#futureHumidity2").html((response.list[8].main.humidity) + "%");
-            $("#futureHumidity3").html((response.list[16].main.humidity) + "%");
-            $("#futureHumidity4").html((response.list[24].main.humidity) + "%");
-            $("#futureHumidity5").html((response.list[32].main.humidity) + "%");
+            $("#futureDate1").html(new Date(response.list[5].dt * 1000).toLocaleDateString());
+            $("#futureDate2").html(new Date(response.list[13].dt * 1000).toLocaleDateString());
+            $("#futureDate3").html(new Date(response.list[21].dt * 1000).toLocaleDateString());
+            $("#futureDate4").html(new Date(response.list[29].dt * 1000).toLocaleDateString());
+            $("#futureDate5").html(new Date(response.list[37].dt * 1000).toLocaleDateString());
+            $("#futureImg1").html("<img src=" + "https://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png" + ">");
+            $("#futureImg2").html("<img src=" + "https://openweathermap.org/img/wn/" + response.list[13].weather[0].icon + "@2x.png" + ">");
+            $("#futureImg3").html("<img src=" + "https://openweathermap.org/img/wn/" + response.list[21].weather[0].icon + "@2x.png" + ">");
+            $("#futureImg4").html("<img src=" + "https://openweathermap.org/img/wn/" + response.list[29].weather[0].icon + "@2x.png" + ">");
+            $("#futureImg5").html("<img src=" + "https://openweathermap.org/img/wn/" + response.list[37].weather[0].icon + "@2x.png" + ">");
+            $("#futureTemp1").html(response.list[5].main.temp);
+            $("#futureTemp2").html(response.list[13].main.temp);
+            $("#futureTemp3").html(response.list[21].main.temp);
+            $("#futureTemp4").html(response.list[29].main.temp);
+            $("#futureTemp5").html(response.list[37].main.temp);
+            $("#futureHumidity1").html((response.list[5].main.humidity) + "%");
+            $("#futureHumidity2").html((response.list[13].main.humidity) + "%");
+            $("#futureHumidity3").html((response.list[21].main.humidity) + "%");
+            $("#futureHumidity4").html((response.list[29].main.humidity) + "%");
+            $("#futureHumidity5").html((response.list[37].main.humidity) + "%");
             
         })
     }
