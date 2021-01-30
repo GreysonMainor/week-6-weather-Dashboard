@@ -64,12 +64,16 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response)
-            $("#futureImg").html("https://openweathermap.org/img/wn/" + (response.list[1].weather[0].icon) + ".png")
-            $("#futureTemp1").html(response.list[1].main.temp)
-            $("#futureTemp2").html(response.list[8].main.temp)
-            $("#futureTemp3").html(response.list[16].main.temp)
-            $("#futureTemp4").html(response.list[24].main.temp)
-            $("#futureTemp5").html(response.list[32].main.temp)
+            $("#futureDate1").html(new Date(response.list[1].dt * 1000).toLocaleDateString());
+            $("#futureDate2").html(new Date(response.list[8].dt * 1000).toLocaleDateString());
+            $("#futureDate3").html(new Date(response.list[16].dt * 1000).toLocaleDateString());
+            $("#futureDate4").html(new Date(response.list[24].dt * 1000).toLocaleDateString());
+            $("#futureDate5").html(new Date(response.list[32].dt * 1000).toLocaleDateString());
+            $("#futureTemp1").html(response.list[1].main.temp);
+            $("#futureTemp2").html(response.list[8].main.temp);
+            $("#futureTemp3").html(response.list[16].main.temp);
+            $("#futureTemp4").html(response.list[24].main.temp);
+            $("#futureTemp5").html(response.list[32].main.temp);
             $("#futureHumidity1").html((response.list[1].main.humidity) + "%");
             $("#futureHumidity2").html((response.list[8].main.humidity) + "%");
             $("#futureHumidity3").html((response.list[16].main.humidity) + "%");
