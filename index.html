@@ -12,6 +12,7 @@
         <h1> <strong>Weather Dashboard</strong></h1>
     </div>
     <div class="container">
+        <!-- search for a city input and button -->
         <div class="row">
             <div class="col-md-4">
                 <h4><strong>Search for a City:</strong></h4>
@@ -24,7 +25,19 @@
                 <ul class="pastSearch">
                     past searches
                 </ul>
-            </div>   
+                <!-- added a section to display content for my temp, humidity, wind, and UV-->
+            </div> 
+              <div class="col-sm-8">
+                <div class="border">
+                    <div class="col-sm-12" id="current-weather">
+                        <h3 id="current-city"></h3>
+                        <p>Temperature:<span class = "current" id = "temp"></span></p>
+                        <p>Humidity:<span class = "current" id = "humidity"></span></p> 
+                        <p>Wind Speed:<span class = "current" id = "wind"></span></p>
+                        <p>UV index:<span class = "current" id = "uv"></span></p> 
+                    </div>
+                </div>
+              </div>
         </div>
     </div>
 
