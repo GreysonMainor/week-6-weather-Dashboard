@@ -29,26 +29,27 @@ $(document).ready(function () {
             var iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
             var date = new Date(response.dt * 1000).toLocaleDateString();
             $(currentCity).html(response.name + "(" + date + ")" + "<img src=" + iconUrl + ">");
-            console.log(icon)
-            $(currentTemp).html((response.main.temp) + "°F")
-            $(currentHumidity).html((response.main.humidity) + "%")
-            $(currentWind).html((response.wind.speed) + "MPH")   
-            currentUvIndex(response.coord.lat,response.coord.lon) 
+            console.log(icon);
+            $(currentTemp).html((response.main.temp) + "°F");
+            $(currentHumidity).html((response.main.humidity) + "%");
+            $(currentWind).html((response.wind.speed) + "MPH");
+            currentUvIndex(response.coord.lat, response.coord.lon);
+            getForecast(response.id);
         })
     }
 
-    function currentUvIndex(lon,lat){
+    function currentUvIndex(lon, lat) {
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey,
+            url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial",
             method: "GET"
-        }).then(function(response){
+        }).then(function (response) {
             $(currentUv).html(response.value)
 
-            if (response.value < 4){
+            if (response.value < 4) {
                 $("#uvBtn").addClass("btn-success");
             }
-            else if (response.value < 10){
-            $("#uvBtn").addClass("btn-warning");
+            else if (response.value < 10) {
+                $("#uvBtn").addClass("btn-warning");
             }
             else {
                 $("#uvBtn").addClass("btn-danger");
@@ -57,6 +58,20 @@ $(document).ready(function () {
         })
     }
 
+    function getForecast(cityId) {
+        $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/forecast?id=" + cityId + "&appid=" + apiKey + "&units=imperial",
+            method: "GET"
+        }).then(function (response) {
+            console.log(response)
+            $("#futureTemp1").html(response.list[1].main.temp)
+            $("#futureTemp2").html(response.list[8].main.temp)
+            $("#futureTemp3").html(response.list[16].main.temp)
+            $("#futureTemp4").html(response.list[24].main.temp)
+            $("#futureTemp5").html(response.list[32].main.temp)
+            
+        })
+    }
 
 
 
