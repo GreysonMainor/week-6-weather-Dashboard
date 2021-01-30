@@ -32,8 +32,31 @@ $(document).ready(function () {
             console.log(icon)
             $(currentTemp).html((response.main.temp) + "°F")
             $(currentHumidity).html((response.main.humidity) + "%")
+            $(currentWind).html((response.wind.speed) + "MPH")   
+            currentUvIndex(response.coord.lat,response.coord.lon) 
         })
     }
+
+    function currentUvIndex(lon,lat){
+        $.ajax({
+            url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey,
+            method: "GET"
+        }).then(function(response){
+            $(currentUv).html(response.value)
+
+            if (response.value < 4){
+                $("#uvBtn").addClass("btn-success");
+            }
+            else if (response.value < 10){
+            $("#uvBtn").addClass("btn-warning");
+            }
+            else {
+                $("#uvBtn").addClass("btn-danger");
+            }
+
+        })
+    }
+
 
 
 
