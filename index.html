@@ -20,13 +20,13 @@
             <div class="col-md-4">
                 <h4><strong>Search for a City:</strong></h4>
                 <div class="input-group mb-3">
-                    <input class="form-control" id="search-city">
+                    <input type = "text" class="form-control" id="search-city">
                     <div>
                         <button class="btn bg-primary" id="search-button"><i class="fa fa-search"></i></button>
                     </div>
                 </div>
-                <ul class="pastSearch">
-                    past searches
+                <ul id="historyView">
+                    
                 </ul>
                 <!-- added a section to display content for my temp, humidity, wind, and UV-->
             </div>
@@ -37,7 +37,7 @@
                         <p>Temperature: <span class="current" id="temp"></span></p>
                         <p>Humidity: <span class="current" id="humidity"></span></p>
                         <p>Wind Speed: <span class="current" id="wind"></span></p>
-                        <p>UV index: <button id = "uvBtn"><span class="current" id="uv"></span></button></p>
+                        <p>UV index: <button id="uvBtn"><span class="current" id="uv"></span></button></p>
                     </div>
                 </div>
                 <div class="col-sm-12" id="future-weather">

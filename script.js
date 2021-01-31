@@ -7,16 +7,21 @@ $(document).ready(function () {
     var currentUv = $("#uv");
     var currentCity = $("#current-city");
     var city = "";
-
+    var history = [];
     var apiKey = "3d94d734329ac2e25782373114d9c091";
 
-    $("#search-button").on("click", getWeather)
+
+    $(searchButton).on("click", getWeather)
+
 
     function getWeather(event) {
-        event.preventDefault();
+       event.preventDefault();
         city = searchCity.val();
         currentWeather(city);
+        // renderButtons();
     }
+
+
 
     function currentWeather(city) {
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + apiKey + "&units=imperial";
@@ -35,7 +40,7 @@ $(document).ready(function () {
             $(currentWind).html((response.wind.speed) + "MPH");
             currentUvIndex(response.coord.lat, response.coord.lon);
             getForecast(response.id);
-        })
+        });
     }
 
     function currentUvIndex(lon, lat) {
@@ -84,10 +89,41 @@ $(document).ready(function () {
             $("#futureHumidity3").html((response.list[21].main.humidity) + "%");
             $("#futureHumidity4").html((response.list[29].main.humidity) + "%");
             $("#futureHumidity5").html((response.list[37].main.humidity) + "%");
-            
         })
     }
 
+
+    var history = [];
+    function renderButtons() {
+
+        $("#historyView").empty();
+
+        for (var i = 0; i < history.length; i++) {
+
+            var a = $("<button>");
+            a.addClass("history");
+            a.attr("data-name", history[i]);
+            a.text(history[i]);
+            $("#historyView").append(a);
+        }
+    }
+
+    $(searchButton).on("click", function (event) {
+        
+
+        var past = $(searchCity).val().trim();
+        history.push(past);
+
+        renderButtons();
+    });
+
+    renderButtons();
+
+
+
+    $(document).on("click", ".history", function(){
+        getWeather();
+    })
 
 
 });
