@@ -15,8 +15,8 @@ $(document).ready(function () {
 
 
     function getWeather(event) {
-       event.preventDefault();
-        city = searchCity.val();
+       
+       var city = searchCity.val();
         currentWeather(city);
         // renderButtons();
     }
@@ -100,7 +100,7 @@ $(document).ready(function () {
 
         for (var i = 0; i < history.length; i++) {
 
-            var a = $("<button>");
+            var a = $("<li>");
             a.addClass("history");
             a.attr("data-name", history[i]);
             a.text(history[i]);
